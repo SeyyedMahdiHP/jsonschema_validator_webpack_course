@@ -1,0 +1,437 @@
+{
+  "definitions": {
+    "svg-icon": {
+      "$id": "#svg-icon",
+      "type": "string",
+      "title": "The Svg Icon Schema",
+      "default": "",
+      "examples": [
+        "http://test.co/passcode.svg",
+        "http://test.co/restricitons.svg",
+        "http://test.co/svg-help-icon.svg",
+        "http://test.co/adnroid9-icon.svg",
+        "http://test.co/android-os4.3-up-icon.svg",
+        "http://test.co/profile-owner-icon.svg",
+        "http://test.co/device-owner-icon.svg"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "complex-words": {
+      "$id": "#complex-words",
+      "type": "string",
+      "title": "The Code Name Schema",
+      "description": "Shows the structural name",
+      "default": "",
+      "examples": [
+        "dc.mdm.enroll.passcode",
+        "dc.mdm.device_mgmt.restrictions"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "simple-words": {
+      "$id": "#simple-words",
+      "type": "string",
+      "title": "The Simple-Words Schema",
+      "default": "",
+      "examples": [
+        "Passcode",
+        "Restrictions",
+        "Browser Restriction",
+        "Network and Roaming"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "is-necessary": {
+      "$id": "#is-necessary",
+      "type": "boolean",
+      "title": "The Element is-necessary Schema",
+      "default": false,
+      "examples": [
+        true
+      ],
+      "pattern": "^(.*)$"
+    },
+    "input-field-type": {
+      "$id": "#input-field-type",
+      "type": "string",
+      "title": "The Field type Schema",
+      "default": "radio",
+      "enum": [
+        "radio",
+        "select",
+        "number",
+        "text",
+        "password"
+      ],
+      "examples": [
+        "select"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "default-value": {
+      "allOf": [
+        {
+          "$id": "#default-value",
+          "title": "The Default Value for select_options,number,radio/checkbox Schema",
+          "examples": [
+            "true",
+            "false",
+            0,
+            1,
+            7
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        }
+      ]
+    },
+    "label-value-pairs": {
+      "$id": "#label-value-pairs",
+      "type": "array",
+      "title": "The Label-value-pairs Schema",
+      "items": {
+        "type": "object",
+        "title": "The label-value-pair Items Schema",
+        "required": [
+          "value",
+          "label",
+          "hints"
+        ],
+        "properties": {
+          "value": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "label": {
+            "$ref": "#/definitions/complex-words"
+          },
+          "hints": {
+            "$ref": "#/definitions/complex-words"
+          }
+        }
+      }
+    },
+    "side": {
+      "$id": "#side",
+      "type": "string",
+      "title": "shows where the tool tips should stick",
+      "default": "",
+      "examples": [
+        "input-field",
+        "field-name"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "tool-tips": {
+      "$id": "#tool-tips",
+      "type": "array",
+      "title": "The Tool-tips Schema",
+      "items": {
+        "type": "object",
+        "title": "The Items of tooltip Schema",
+        "required": [
+          "title",
+          "description",
+          "side",
+          "svg-icon"
+        ],
+        "properties": {
+          "title": {
+            "$ref": "#/definitions/complex-words"
+          },
+          "description": {
+            "$ref": "#/definitions/complex-words"
+          },
+          "side": {
+            "$ref": "#/definitions/side"
+          },
+          "svg-icon": {
+            "$ref": "#/definitions/svg-icon"
+          }
+        }
+      }
+    },
+    "alert": {
+      "$id": "#alert",
+      "type": "object",
+      "title": "The Alert Schema",
+      "required": [
+        "title",
+        "status",
+        "svg-icon",
+        "description"
+      ],
+      "properties": {
+        "title": {
+          "$ref": "#/definitions/complex-words"
+        },
+        "status": {
+          "$ref": "#/definitions/simple-words"
+        },
+        "svg-icon": {
+          "$ref": "#/definitions/svg-icon"
+        },
+        "description": {
+          "$ref": "#/definitions/complex-words"
+        }
+      }
+    },
+    "input-field": {
+      "$id": "#input-field",
+      "type": "object",
+      "required": [
+        "name",
+        "type"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/complex-words"
+        },
+        "type": {
+          "$ref": "#/definitions/input-field-type"
+        },
+        "other-attributes": {
+          "$ref": "#/definitions/complex-words"
+        },
+        "alert": {
+          "$ref": "#/definitions/alert"
+        }
+      },
+      "if": {
+        "properties": {
+          "type": {
+            "enum": [
+              "text",
+              "password"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "default-value": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "label-value-pairs": {
+            "$ref": "#/definitions/label-value-pairs"
+          }
+        }
+      }
+    },
+    "branch-item": {
+      "$id": "#branch-item",
+      "type": "object",
+      "title": "The branch-item Schema",
+      "required": [
+        "element-label",
+        "is-necessary",
+        "input-field"
+      ],
+      "properties": {
+        "element-label": {
+          "$ref": "#/definitions/simple-words"
+        },
+        "is-necessary": {
+          "$ref": "#/definitions/is-necessary"
+        },
+        "input-field": {
+          "$ref": "#/definitions/input-field"
+        },
+        "tool-tips": {
+          "$ref": "#/definitions/tool-tips"
+        },
+        "dependent-fields": {
+          "$ref": "#/definitions/dependent-fields"
+        }
+      }
+    },
+    "branch-items": {
+      "type": "array",
+      "title": "The Branch Items Schema",
+      "items": {
+        "$ref": "#/definitions/branch-item"
+      }
+    },
+    "input-array": {
+      "$id": "#input-array",
+      "type": "array",
+      "title": "The input-array of dependent fields Schema",
+      "items": {
+        "type": "object",
+        "required": [
+          "field-name",
+          "field-set"
+        ],
+        "properties": {
+          "field-name": {
+            "$ref": "#/definitions/simple-words"
+          },
+          "field-set": {
+            "$id": "#field-set",
+            "type": "array",
+            "title": "The field-set Schema",
+            "items": {
+              "$ref": "#/definitions/branch-item"
+            }
+          }
+        }
+      }
+    },
+    "dependent-fields": {
+      "$id": "#dependent-fields",
+      "type": "object",
+      "title": "The dependent-fields Schema",
+      "required": [
+        "fieldset-type",
+        "type"
+      ],
+      "properties": {
+        "fieldset-type": {
+          "$ref": "#/definitions/complex-words"
+        },
+        "type": {
+          "$id": "#type-field",
+          "type": "object",
+          "title": "The type of dependent-fields Schema",
+          "required": [
+            "show-hide",
+            "indent"
+          ],
+          "properties": {
+            "show-hide": {
+              "$ref": "#/definitions/input-array"
+            },
+            "indent": {
+              "$ref": "#/definitions/input-array"
+            }
+          }
+        }
+      }
+    },
+    "sub-tress": {
+      "type": "array",
+      "title": "The Branch Items Schema",
+      "items": {
+        "type": "object",
+        "required": [
+          "branch-name",
+          "branch-items"
+        ],
+        "properties": {
+          "branch-name": {
+            "$ref": "#/definitions/complex-words"
+          },
+          "branch-info": {
+            "$ref": "#/definitions/complex-words"
+          },
+          "branch-items": {
+            "$ref": "#/definitions/branch-items"
+          }
+        }
+      }
+    },
+    "profile-options": {
+      "$id": "#profile-options",
+      "type": "array",
+      "title": "The Profile options Schema",
+      "items": {
+        "type": "object",
+        "required": [
+          "svg-icon",
+          "code-name",
+          "title",
+          "multi-section"
+        ],
+        "properties": {
+          "svg-icon": {
+            "$ref": "#/definitions/svg-icon"
+          },
+          "code-name": {
+            "$ref": "#/definitions/complex-words"
+          },
+          "title": {
+            "$ref": "#/definitions/complex-words"
+          },
+          "multi-section": {
+            "$id": "#/definitions/profile-options/multi-section",
+            "type": "boolean",
+            "title": "The multi-section Schema",
+            "description": "shows that there should be branch-items or sub-trees",
+            "default": false,
+            "enum": [
+              true,
+              false
+            ]
+          }
+        },
+        "if": {
+          "properties": {
+            "multi-section": {
+              "const": false
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "branch-items"
+          ],
+          "properties": {
+            "branch-items": {
+              "$ref": "#/definitions/branch-items"
+            }
+          }
+        },
+        "else": {
+          "required": [
+            "sub-trees"
+          ],
+          "properties": {
+            "sub-trees": {
+              "$ref": "#/definitions/sub-trees"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://test.co/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "profileOptions"
+  ],
+  "properties": {
+    "profileOptions": {
+     "$ref": "#/definitions/profile-options"
+    }
+  }
+}

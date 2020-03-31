@@ -1,0 +1,413 @@
+{
+  "profileOptions": [
+    {
+      "svg-icon": "http://test.co/passcode.svg",
+      "code-name": "dc.mdm.enroll.passcode",
+      "title": "Passc-ode",
+      "multi-section":false,
+      "branch-items": [
+        {
+          "element-label": "Apply passcode to",
+          "is-necessary": true,
+          "input-field": {
+            "name": "scope_for_passcode",
+            "type": "radio",
+            "default-value": 0,
+            "label-value-pairs": [
+              {
+                "value": 0,
+                "label": "Device",
+                "hints": ""
+              },
+              {
+                "value": 1,
+                "label": "Work profile",
+                "hints": ""
+              }
+            ],
+            "other-attributes": "",
+            "alert": {
+              "title": "",
+              "status": "",
+              "svg-icon": "",
+              "description": ""
+            }
+          },
+          "tool-tips": [
+            {
+              "title": "Applying passcode to container",
+              "description": "Passcode gets applied to the logical container, which was created as a result of the device being provisioned as Profile Owner. Applicable for devices running 7.0 and above Learn more",
+              "side": "input-field",
+              "svg-icon": "http://test.co/svg-help-icon.svg"
+            }
+          ],
+          "dependent-fields": {
+            "fieldset-type": "subhead-group-style",
+            "type": {
+              "show-hide": [
+                {
+                  "field-name": "Work profile",
+                  "field-set": [
+                    {
+                      "element-label": "Set same passcode for device and work profile",
+                      "is-necessary": false,
+                      "input-field": {
+                        "name": "allow_one_lock",
+                        "type": "radio",
+                        "default-value": true,
+                        "label-value-pairs": [
+                          {
+                            "value": true,
+                            "label": "Allow",
+                            "hints": ""
+                          },
+                          {
+                            "value": false,
+                            "label": "Restrict",
+                            "hints": ""
+                          }
+                        ],
+                        "other-attributes": "",
+                        "alert": {
+                          "title": "",
+                          "status": "",
+                          "svg-icon": "",
+                          "description": ""
+                        }
+                      },
+                      "tool-tips": [
+                        {
+                          "title": "Android 9.0 and above",
+                          "description": "",
+                          "side": "field-name",
+                          "svg-icon": "http://test.co/adnroid9-icon.svg"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "indent": []
+            }
+          }
+        },
+        {
+          "element-label": "Maximum number of failed attempts",
+          "is-necessary": false,
+          "input-field": {
+            "name": "maximum-failed-attempts",
+            "type": "select",
+            "default-value": 0,
+            "label-value-pairs": [
+              {
+                "value": -1,
+                "label": "None",
+                "hints": ""
+              },
+              {
+                "value": 4,
+                "label": "4 attempts",
+                "hints": "The device will be factory reset after 4 failed unlock attempts."
+              }
+            ]
+          },
+          "tool-tips": [
+            {
+              "title": "Maximum number of failed attempts",
+              "description": "Device will be completely wiped if the number of failed attempts exceeds the limit defined in the passcode policy",
+              "side": "field-name",
+              "svg-icon": "http://test.co/svg-help-icon.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "svg-icon": "http://test.co/restricitons.svg",
+      "code-name": "dc.mdm.device_mgmt.restrictions",
+      "title": "Restrictions",
+      "multi-section":true,
+      "sub-trees": [
+        {
+          "branch-name": "Browser Restriction",
+          "branch-info": "In Core Android devices, these restrictions are applied to Google Chrome",
+          "branch-items": [
+            {
+              "element-label": "Android Browser",
+              "is-necessary": false,
+              "input-field": {
+                "name": "allow_android_browser",
+                "type": "radio",
+                "default-value": true,
+                "label-value-pairs": [
+                  {
+                    "value": true,
+                    "label": "Allow",
+                    "hints": ""
+                  },
+                  {
+                    "value": false,
+                    "label": "Restrict",
+                    "hints": ""
+                  }
+                ]
+              },
+              "tool-tips": [
+                {
+                  "title": "Samsung (OS 4.3 and above)",
+                  "description": "",
+                  "side": "field-name",
+                  "svg-icon": "http://test.co/android-os4.3-up-icon.svg"
+                },
+                {
+                  "title": "Profile Owner",
+                  "description": "Enrolling device running Android 5.0 or later as Profile Owner provides advance configuration and management capabilities. ",
+                  "side": "field-name",
+                  "svg-icon": "http://test.co/profile-owner-icon.svg"
+                },
+                {
+                  "title": "Device Owner",
+                  "description": "Enrolling device running Android 5.0 or later as Device Owner provides advance configuration and management capabilities. ",
+                  "side": "field-name",
+                  "svg-icon": "http://test.co/device-owner-icon.svg"
+                }
+              ],
+              "dependent-fields": {
+                "fieldset-type": "subhead-group-style",
+                "type": {
+                  "show-hide": null,
+                  "indent": {
+                    "Allow": [
+                      {
+                        "element-label": "Fraud warning setting",
+                        "is-necessary": false,
+                        "input-field": {
+                          "name": "browser_allow_fraud_warning",
+                          "type": "radio",
+                          "default-value": true,
+                          "label-value-pairs": [
+                            {
+                              "value": true,
+                              "label": "Allow",
+                              "hints": ""
+                            },
+                            {
+                              "value": false,
+                              "label": "Restrict",
+                              "hints": ""
+                            }
+                          ]
+                        },
+                        "tool-tips": [
+                          {
+                            "title": "Samsung (OS 4.3 and above)",
+                            "description": "",
+                            "side": "field-name",
+                            "svg-icon": "http://test.co/android-os4.3-up-icon.svg"
+                          },
+                          {
+                            "title": "Profile Owner",
+                            "description": "Enrolling device running Android 5.0 or later as Profile Owner provides advance configuration and management capabilities. ",
+                            "side": "field-name",
+                            "svg-icon": "http://test.co/profile-owner-icon.svg"
+                          },
+                          {
+                            "title": "Device Owner",
+                            "description": "Enrolling device running Android 5.0 or later as Device Owner provides advance configuration and management capabilities. ",
+                            "side": "field-name",
+                            "svg-icon": "http://test.co/device-owner-icon.svg"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "branch-name": "Network and Roaming",
+          "branch-info": "",
+          "branch-items": [
+            {
+              "element-label": "Wi-Fi",
+              "is-necessary": false,
+              "input-field": {
+                "name": "allow-wifi",
+                "type": "select",
+                "default-value": 4,
+                "label-value-pairs": [
+                  {
+                    "value": 4,
+                    "label": "User Controlled",
+                    "hints": ""
+                  },
+                  {
+                    "value": 5,
+                    "label": "Always On",
+                    "hints": "It is recommended to disable Wi-Fi only if the devices have data connectivity to avoid communication issues with MDM server."
+                  },
+                  {
+                    "value": 6,
+                    "label": "Always Off",
+                    "hints": ""
+                  }
+                ]
+              },
+              "tool-tips": [
+                {
+                  "title": "Android 2.3 and above",
+                  "description": "",
+                  "side": "field-name",
+                  "svg-icon": "http://test.co/android-2.3-up-icon.svg"
+                },
+                {
+                  "title": "Samsung (OS 4.3 and above)",
+                  "description": "",
+                  "side": "field-name",
+                  "svg-icon": "http://test.co/android-os4.3-up-icon.svg"
+                },
+                {
+                  "title": "Profile Owner",
+                  "description": "Enrolling device running Android 5.0 or later as Profile Owner provides advance configuration and management capabilities. ",
+                  "side": "field-name",
+                  "svg-icon": "http://test.co/profile-owner-icon.svg"
+                },
+                {
+                  "title": "Device Owner",
+                  "description": "Enrolling device running Android 5.0 or later as Device Owner provides advance configuration and management capabilities. ",
+                  "side": "field-name",
+                  "svg-icon": "http://test.co/device-owner-icon.svg"
+                },
+                {
+                  "title": "Wi-Fi",
+                  "description": "If Wi-Fi is disabled on the device,end users will not have permission to enable it. The managed mobile device will be out of network connectivity and even the MDM server cannot reach the device until cellular data is enabled on the device",
+                  "side": "field-name",
+                  "svg-icon": "http://test.co/svg-help-icon.svg"
+                }
+              ],
+              "dependent-fields": {
+                "fieldset-type": "subhead-group-style",
+                "type": {
+                  "show-hide": null,
+                  "indent": {
+                    "User Controlled": [
+                      {
+                        "element-label": "Wi-fi Direct",
+                        "is-necessary": false,
+                        "input-field": {
+                          "name": "allow_wifi_direct",
+                          "type": "radio",
+                          "default-value": true,
+                          "label-value-pairs": [
+                            {
+                              "value": true,
+                              "label": "Allow",
+                              "hints": ""
+                            },
+                            {
+                              "value": false,
+                              "label": "Restrict",
+                              "hints": ""
+                            }
+                          ]
+                        },
+                        "tool-tips": [
+                          {
+                            "title": "Samsung (OS 4.3 and above)",
+                            "description": "",
+                            "side": "field-name",
+                            "svg-icon": "http://test.co/android-os4.3-up-icon.svg"
+                          }
+                        ]
+                      },
+                      {
+                        "element-label": "Connect to wifi,only if distributed via MDM",
+                        "is-necessary": false,
+                        "input-field": {
+                          "name": "allow_whitelist_wifi_only",
+                          "type": "radio",
+                          "default-value": true,
+                          "label-value-pairs": [
+                            {
+                              "value": true,
+                              "label": "Yes",
+                              "hints": ""
+                            },
+                            {
+                              "value": false,
+                              "label": "No",
+                              "hints": ""
+                            }
+                          ],
+                          "alert": {
+                            "title": "Wi-Fi may get disabled",
+                            "status": "warning",
+                            "svg-icon": "http://test.co/alert-warning-icon.svg",
+                            "description": " Ensure Wi-Fi profile(s) have already been distributed through MDM to the devices and the configurations has been successfully setup in devices. Also,the Wi-Fi profile needs to be modified and re-associated if there is a change in SSID. If not,devices cannot connect to any Wi-Fi network and MDM Server cannot manage these devices."
+                          }
+                        },
+                        "tool-tips": [
+                          {
+                            "title": "Android 2.3 and above",
+                            "description": "",
+                            "side": "field-name",
+                            "svg-icon": "http://test.co/android-2.3-up-icon.svg"
+                          },
+                          {
+                            "title": "Samsung (OS 4.3 and above)",
+                            "description": "",
+                            "side": "field-name",
+                            "svg-icon": "http://test.co/android-os4.3-up-icon.svg"
+                          },
+                          {
+                            "title": "Profile Owner",
+                            "description": "Enrolling device running Android 5.0 or later as Profile Owner provides advance configuration and management capabilities. ",
+                            "side": "field-name",
+                            "svg-icon": "http://test.co/profile-owner-icon.svg"
+                          },
+                          {
+                            "title": "Device Owner",
+                            "description": "Enrolling device running Android 5.0 or later as Device Owner provides advance configuration and management capabilities. ",
+                            "side": "field-name",
+                            "svg-icon": "http://test.co/device-owner-icon.svg"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "svg-icon": "http://test.co/wifi.svg",
+      "code-name": "dc.conf.wifi.wifi_text",
+      "title": "Wi-Fi",
+      "multi-section":false,
+      "branch-items": [
+        {
+          "element-label": "Wi-Fi SSID",
+          "is-necessary": true,
+          "input-field": {
+            "name": "wifi_ssid",
+            "type": "text",
+            "value": "12"
+          },
+          "tool-tips": [
+            {
+              "title": "Maximum number of failed attempts",
+              "description": "Device will be completely wiped if the number of failed attempts exceeds the limit defined in the passcode policy",
+              "side": "field-name",
+              "svg-icon": "http://test.co/svg-help-icon.svg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

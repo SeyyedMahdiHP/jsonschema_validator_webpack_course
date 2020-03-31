@@ -1,0 +1,125 @@
+{
+  "networkZones": [
+    {
+      "ZoneID": "sync",
+      "ParentZone": "",
+      "ZoneType": "IPV4",
+      "Comment": "",
+      "IncomingOptions": "",
+      "OutgoingOptions": ""
+    },
+    {
+      "ZoneID": "fire",
+      "ParentZone": "",
+      "ZoneType": "firewall system",
+      "Comment": "",
+      "IncomingOptions": "",
+      "OutgoingOptions": ""
+    }
+  ],
+  "NetworkInterfaces": [
+    {
+      "Interface": "eth2",
+      "ZoneName": "dmz",
+      "BroadcastAddress": "None",
+      "Options": "None"
+    }
+  ],
+  "DefaultPolicices": [
+    {
+      "SourceZone": "fire",
+      "DestinationZone": "dmz",
+      "Policy": "ACCEPT",
+      "SyslogLevel": "None",
+      "TrafficLimit": "None",
+      "Burst": ""
+    },
+    {
+      "SourceZone": "trust",
+      "DestinationZone": "sync",
+      "Policy": "DROP",
+      "SyslogLevel": "None",
+      "TrafficLimit": "None"
+    }
+  ],
+  "FirewallRules": {
+    "dmz": {
+      "dmz2fire": [
+        {
+          "Action": "ACCEPT",
+          "Source": {
+            "Zone": "dmz",
+            "IP": "192.168.1.1"
+          },
+          "Dest": {
+            "Zone": "fire",
+            "IP": "192.168.1.6"
+          },
+          "service": "Admin-test-services",
+          "RuleNumber": 2,
+          "Log": ""
+        }
+      ],
+      "dmz2sync": [
+        {
+          "Action": "ACCEPT",
+          "Source": "",
+          "Dest": "",
+          "service": "Admin-test-services",
+          "RuleNumber": 2,
+          "Log": ""
+        }
+      ]
+    },
+    "showall": {
+      "dmz2fire": [
+        {
+          "Action": "ACCEPT",
+          "Source": "",
+          "Dest": "",
+          "service": "Admin-s",
+          "RuleNumber": 2,
+          "Log": ""
+        }
+      ],
+      "dmz2sync": [
+        {
+          "Action": "ACCEPT",
+          "Source": "",
+          "Dest": "",
+          "service": "Admin-services",
+          "RuleNumber": 2,
+          "Log": ""
+        }
+      ]
+    }
+  },
+  "TypeOfServices": [
+    {
+      "SourceZone": "dmz",
+      "DestinationZone": "fire",
+      "Protocol": "TCP",
+      "SourcePorts": "10-230",
+      "DestinationPorts": "30-40",
+      "TypeOfServices": "Normal-Service"
+    }
+  ],
+  "ProxyARP": [
+    {
+      "AddressToARP": "",
+      "ExternalInterface": "eth2",
+      "RouteToHosExist": "yes",
+      "LeaveRouteEvenFirewallStopped": "yes",
+      "ConnectedToInterface": "eth0"
+    }
+  ],
+  "WhenStopped": [
+    {
+      "Interface": "eth0",
+      "AccessibleAddresses": "",
+      "RouteOptions": [
+        "acceptTrafficBack to host"
+      ]
+    }
+  ]
+}

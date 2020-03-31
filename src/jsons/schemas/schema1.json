@@ -1,0 +1,1121 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "required": [
+    "networkZones",
+    "NetworkInterfaces",
+    "DefaultPolicices",
+    "FirewallRules",
+    "TypeOfServices",
+    "ProxyARP",
+    "WhenStopped"
+  ],
+  "properties": {
+    "networkZones": {
+      "$id": "#/properties/networkZones",
+      "type": "array",
+      "title": "The Networkzones Schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "items": {
+        "$id": "#/properties/networkZones/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "Comment": "",
+            "ZoneID": "sync",
+            "ParentZone": "",
+            "IncomingOptions": "",
+            "OutgoingOptions": "",
+            "ZoneType": "IPV4"
+          },
+          {
+            "Comment": "",
+            "ZoneID": "fire",
+            "ParentZone": "",
+            "IncomingOptions": "",
+            "OutgoingOptions": "",
+            "ZoneType": "firewall system"
+          }
+        ],
+        "required": [
+          "ZoneID",
+          "ParentZone",
+          "ZoneType",
+          "Comment",
+          "IncomingOptions",
+          "OutgoingOptions"
+        ],
+        "properties": {
+          "ZoneID": {
+            "$id": "#/properties/networkZones/items/properties/ZoneID",
+            "type": "string",
+            "title": "The Zoneid Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "sync"
+            ]
+          },
+          "ParentZone": {
+            "$id": "#/properties/networkZones/items/properties/ParentZone",
+            "type": "string",
+            "title": "The Parentzone Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              ""
+            ]
+          },
+          "ZoneType": {
+            "$id": "#/properties/networkZones/items/properties/ZoneType",
+            "type": "string",
+            "title": "The Zonetype Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "IPV4"
+            ]
+          },
+          "Comment": {
+            "$id": "#/properties/networkZones/items/properties/Comment",
+            "type": "string",
+            "title": "The Comment Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              ""
+            ]
+          },
+          "IncomingOptions": {
+            "$id": "#/properties/networkZones/items/properties/IncomingOptions",
+            "type": "string",
+            "title": "The Incomingoptions Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              ""
+            ]
+          },
+          "OutgoingOptions": {
+            "$id": "#/properties/networkZones/items/properties/OutgoingOptions",
+            "type": "string",
+            "title": "The Outgoingoptions Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              ""
+            ]
+          }
+        }
+      }
+    },
+    "NetworkInterfaces": {
+      "$id": "#/properties/NetworkInterfaces",
+      "type": "array",
+      "title": "The Networkinterfaces Schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "items": {
+        "$id": "#/properties/NetworkInterfaces/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "BroadcastAddress": "None",
+            "Options": "None",
+            "Interface": "eth2",
+            "ZoneName": "dmz"
+          }
+        ],
+        "required": [
+          "Interface",
+          "ZoneName",
+          "BroadcastAddress",
+          "Options"
+        ],
+        "properties": {
+          "Interface": {
+            "$id": "#/properties/NetworkInterfaces/items/properties/Interface",
+            "type": "string",
+            "title": "The Interface Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "eth2"
+            ]
+          },
+          "ZoneName": {
+            "$id": "#/properties/NetworkInterfaces/items/properties/ZoneName",
+            "type": "string",
+            "title": "The Zonename Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "dmz"
+            ]
+          },
+          "BroadcastAddress": {
+            "$id": "#/properties/NetworkInterfaces/items/properties/BroadcastAddress",
+            "type": "string",
+            "title": "The Broadcastaddress Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "None"
+            ]
+          },
+          "Options": {
+            "$id": "#/properties/NetworkInterfaces/items/properties/Options",
+            "type": "string",
+            "title": "The Options Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "None"
+            ]
+          }
+        }
+      }
+    },
+    "DefaultPolicices": {
+      "$id": "#/properties/DefaultPolicices",
+      "type": "array",
+      "title": "The Defaultpolicices Schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "items": {
+        "$id": "#/properties/DefaultPolicices/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "DestinationZone": "dmz",
+            "Policy": "ACCEPT",
+            "TrafficLimit": "None",
+            "Burst": "",
+            "SyslogLevel": "None",
+            "SourceZone": "fire"
+          },
+          {
+            "Policy": "DROP",
+            "DestinationZone": "sync",
+            "TrafficLimit": "None",
+            "SourceZone": "trust",
+            "SyslogLevel": "None"
+          }
+        ],
+        "required": [
+          "SourceZone",
+          "DestinationZone",
+          "Policy",
+          "SyslogLevel",
+          "TrafficLimit",
+          "Burst"
+        ],
+        "properties": {
+          "SourceZone": {
+            "$id": "#/properties/DefaultPolicices/items/properties/SourceZone",
+            "type": "string",
+            "title": "The Sourcezone Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "fire"
+            ]
+          },
+          "DestinationZone": {
+            "$id": "#/properties/DefaultPolicices/items/properties/DestinationZone",
+            "type": "string",
+            "title": "The Destinationzone Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "dmz"
+            ]
+          },
+          "Policy": {
+            "$id": "#/properties/DefaultPolicices/items/properties/Policy",
+            "type": "string",
+            "title": "The Policy Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "ACCEPT"
+            ]
+          },
+          "SyslogLevel": {
+            "$id": "#/properties/DefaultPolicices/items/properties/SyslogLevel",
+            "type": "string",
+            "title": "The Sysloglevel Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "None"
+            ]
+          },
+          "TrafficLimit": {
+            "$id": "#/properties/DefaultPolicices/items/properties/TrafficLimit",
+            "type": "string",
+            "title": "The Trafficlimit Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "None"
+            ]
+          },
+          "Burst": {
+            "$id": "#/properties/DefaultPolicices/items/properties/Burst",
+            "type": "string",
+            "title": "The Burst Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              ""
+            ]
+          }
+        }
+      }
+    },
+    "FirewallRules": {
+      "$id": "#/properties/FirewallRules",
+      "type": "object",
+      "title": "The Firewallrules Schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "showall": {
+            "dmz2fire": [
+              {
+                "Dest": "",
+                "Source": "",
+                "Action": "ACCEPT",
+                "RuleNumber": 2.0,
+                "service": "Admin-s",
+                "Log": ""
+              }
+            ],
+            "dmz2sync": [
+              {
+                "Dest": "",
+                "Source": "",
+                "Action": "ACCEPT",
+                "RuleNumber": 2.0,
+                "service": "Admin-services",
+                "Log": ""
+              }
+            ]
+          },
+          "dmz": {
+            "dmz2fire": [
+              {
+                "Action": "ACCEPT",
+                "RuleNumber": 2.0,
+                "service": "Admin-test-services",
+                "Log": "",
+                "Dest": {
+                  "Zone": "fire",
+                  "IP": "192.168.1.6"
+                },
+                "Source": {
+                  "Zone": "dmz",
+                  "IP": "192.168.1.1"
+                }
+              }
+            ],
+            "dmz2sync": [
+              {
+                "Action": "ACCEPT",
+                "RuleNumber": 2.0,
+                "service": "Admin-test-services",
+                "Log": "",
+                "Dest": "",
+                "Source": ""
+              }
+            ]
+          }
+        }
+      ],
+      "required": [
+        "dmz",
+        "showall"
+      ],
+      "properties": {
+        "dmz": {
+          "$id": "#/properties/FirewallRules/properties/dmz",
+          "type": "object",
+          "title": "The Dmz Schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "dmz2sync": [
+                {
+                  "Dest": "",
+                  "Source": "",
+                  "Action": "ACCEPT",
+                  "service": "Admin-test-services",
+                  "RuleNumber": 2.0,
+                  "Log": ""
+                }
+              ],
+              "dmz2fire": [
+                {
+                  "Action": "ACCEPT",
+                  "RuleNumber": 2.0,
+                  "service": "Admin-test-services",
+                  "Log": "",
+                  "Dest": {
+                    "Zone": "fire",
+                    "IP": "192.168.1.6"
+                  },
+                  "Source": {
+                    "Zone": "dmz",
+                    "IP": "192.168.1.1"
+                  }
+                }
+              ]
+            }
+          ],
+          "required": [
+            "dmz2fire",
+            "dmz2sync"
+          ],
+          "properties": {
+            "dmz2fire": {
+              "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2fire",
+              "type": "array",
+              "title": "The Dmz2fire Schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": [],
+              "items": {
+                "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2fire/items",
+                "type": "object",
+                "title": "The Items Schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "Source": {
+                      "Zone": "dmz",
+                      "IP": "192.168.1.1"
+                    },
+                    "Action": "ACCEPT",
+                    "service": "Admin-test-services",
+                    "RuleNumber": 2.0,
+                    "Log": "",
+                    "Dest": {
+                      "Zone": "fire",
+                      "IP": "192.168.1.6"
+                    }
+                  }
+                ],
+                "required": [
+                  "Action",
+                  "Source",
+                  "Dest",
+                  "service",
+                  "RuleNumber",
+                  "Log"
+                ],
+                "properties": {
+                  "Action": {
+                    "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2fire/items/properties/Action",
+                    "type": "string",
+                    "title": "The Action Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "ACCEPT"
+                    ]
+                  },
+                  "Source": {
+                    "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2fire/items/properties/Source",
+                    "type": "object",
+                    "title": "The Source Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                      {
+                        "Zone": "dmz",
+                        "IP": "192.168.1.1"
+                      }
+                    ],
+                    "required": [
+                      "Zone",
+                      "IP"
+                    ],
+                    "properties": {
+                      "Zone": {
+                        "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2fire/items/properties/Source/properties/Zone",
+                        "type": "string",
+                        "title": "The Zone Schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                          "dmz"
+                        ]
+                      },
+                      "IP": {
+                        "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2fire/items/properties/Source/properties/IP",
+                        "type": "string",
+                        "title": "The Ip Schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                          "192.168.1.1"
+                        ]
+                      }
+                    }
+                  },
+                  "Dest": {
+                    "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2fire/items/properties/Dest",
+                    "type": "object",
+                    "title": "The Dest Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                      {
+                        "Zone": "fire",
+                        "IP": "192.168.1.6"
+                      }
+                    ],
+                    "required": [
+                      "Zone",
+                      "IP"
+                    ],
+                    "properties": {
+                      "Zone": {
+                        "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2fire/items/properties/Dest/properties/Zone",
+                        "type": "string",
+                        "title": "The Zone Schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                          "fire"
+                        ]
+                      },
+                      "IP": {
+                        "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2fire/items/properties/Dest/properties/IP",
+                        "type": "string",
+                        "title": "The Ip Schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                          "192.168.1.6"
+                        ]
+                      }
+                    }
+                  },
+                  "service": {
+                    "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2fire/items/properties/service",
+                    "type": "string",
+                    "title": "The Service Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Admin-test-services"
+                    ]
+                  },
+                  "RuleNumber": {
+                    "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2fire/items/properties/RuleNumber",
+                    "type": "integer",
+                    "title": "The Rulenumber Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                      2
+                    ]
+                  },
+                  "Log": {
+                    "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2fire/items/properties/Log",
+                    "type": "string",
+                    "title": "The Log Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      ""
+                    ]
+                  }
+                }
+              }
+            },
+            "dmz2sync": {
+              "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2sync",
+              "type": "array",
+              "title": "The Dmz2sync Schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": [],
+              "items": {
+                "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2sync/items",
+                "type": "object",
+                "title": "The Items Schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "Dest": "",
+                    "Source": "",
+                    "Action": "ACCEPT",
+                    "service": "Admin-test-services",
+                    "RuleNumber": 2.0,
+                    "Log": ""
+                  }
+                ],
+                "required": [
+                  "Action",
+                  "Source",
+                  "Dest",
+                  "service",
+                  "RuleNumber",
+                  "Log"
+                ],
+                "properties": {
+                  "Action": {
+                    "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2sync/items/properties/Action",
+                    "type": "string",
+                    "title": "The Action Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "ACCEPT"
+                    ]
+                  },
+                  "Source": {
+                    "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2sync/items/properties/Source",
+                    "type": "string",
+                    "title": "The Source Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      ""
+                    ]
+                  },
+                  "Dest": {
+                    "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2sync/items/properties/Dest",
+                    "type": "string",
+                    "title": "The Dest Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      ""
+                    ]
+                  },
+                  "service": {
+                    "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2sync/items/properties/service",
+                    "type": "string",
+                    "title": "The Service Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Admin-test-services"
+                    ]
+                  },
+                  "RuleNumber": {
+                    "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2sync/items/properties/RuleNumber",
+                    "type": "integer",
+                    "title": "The Rulenumber Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                      2
+                    ]
+                  },
+                  "Log": {
+                    "$id": "#/properties/FirewallRules/properties/dmz/properties/dmz2sync/items/properties/Log",
+                    "type": "string",
+                    "title": "The Log Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      ""
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "showall": {
+          "$id": "#/properties/FirewallRules/properties/showall",
+          "type": "object",
+          "title": "The Showall Schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "dmz2fire": [
+                {
+                  "Dest": "",
+                  "Source": "",
+                  "Action": "ACCEPT",
+                  "RuleNumber": 2.0,
+                  "service": "Admin-s",
+                  "Log": ""
+                }
+              ],
+              "dmz2sync": [
+                {
+                  "Dest": "",
+                  "Source": "",
+                  "Action": "ACCEPT",
+                  "service": "Admin-services",
+                  "RuleNumber": 2.0,
+                  "Log": ""
+                }
+              ]
+            }
+          ],
+          "required": [
+            "dmz2fire",
+            "dmz2sync"
+          ],
+          "properties": {
+            "dmz2fire": {
+              "$id": "#/properties/FirewallRules/properties/showall/properties/dmz2fire",
+              "type": "array",
+              "title": "The Dmz2fire Schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": [],
+              "items": {
+                "$id": "#/properties/FirewallRules/properties/showall/properties/dmz2fire/items",
+                "type": "object",
+                "title": "The Items Schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "Action": "ACCEPT",
+                    "RuleNumber": 2.0,
+                    "service": "Admin-s",
+                    "Log": "",
+                    "Dest": "",
+                    "Source": ""
+                  }
+                ],
+                "required": [
+                  "Action",
+                  "Source",
+                  "Dest",
+                  "service",
+                  "RuleNumber",
+                  "Log"
+                ],
+                "properties": {
+                  "Action": {
+                    "$id": "#/properties/FirewallRules/properties/showall/properties/dmz2fire/items/properties/Action",
+                    "type": "string",
+                    "title": "The Action Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "ACCEPT"
+                    ]
+                  },
+                  "Source": {
+                    "$id": "#/properties/FirewallRules/properties/showall/properties/dmz2fire/items/properties/Source",
+                    "type": "string",
+                    "title": "The Source Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      ""
+                    ]
+                  },
+                  "Dest": {
+                    "$id": "#/properties/FirewallRules/properties/showall/properties/dmz2fire/items/properties/Dest",
+                    "type": "string",
+                    "title": "The Dest Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      ""
+                    ]
+                  },
+                  "service": {
+                    "$id": "#/properties/FirewallRules/properties/showall/properties/dmz2fire/items/properties/service",
+                    "type": "string",
+                    "title": "The Service Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Admin-s"
+                    ]
+                  },
+                  "RuleNumber": {
+                    "$id": "#/properties/FirewallRules/properties/showall/properties/dmz2fire/items/properties/RuleNumber",
+                    "type": "integer",
+                    "title": "The Rulenumber Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                      2
+                    ]
+                  },
+                  "Log": {
+                    "$id": "#/properties/FirewallRules/properties/showall/properties/dmz2fire/items/properties/Log",
+                    "type": "string",
+                    "title": "The Log Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      ""
+                    ]
+                  }
+                }
+              }
+            },
+            "dmz2sync": {
+              "$id": "#/properties/FirewallRules/properties/showall/properties/dmz2sync",
+              "type": "array",
+              "title": "The Dmz2sync Schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": [],
+              "items": {
+                "$id": "#/properties/FirewallRules/properties/showall/properties/dmz2sync/items",
+                "type": "object",
+                "title": "The Items Schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "Dest": "",
+                    "Source": "",
+                    "Action": "ACCEPT",
+                    "service": "Admin-services",
+                    "RuleNumber": 2.0,
+                    "Log": ""
+                  }
+                ],
+                "required": [
+                  "Action",
+                  "Source",
+                  "Dest",
+                  "service",
+                  "RuleNumber",
+                  "Log"
+                ],
+                "properties": {
+                  "Action": {
+                    "$id": "#/properties/FirewallRules/properties/showall/properties/dmz2sync/items/properties/Action",
+                    "type": "string",
+                    "title": "The Action Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "ACCEPT"
+                    ]
+                  },
+                  "Source": {
+                    "$id": "#/properties/FirewallRules/properties/showall/properties/dmz2sync/items/properties/Source",
+                    "type": "string",
+                    "title": "The Source Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      ""
+                    ]
+                  },
+                  "Dest": {
+                    "$id": "#/properties/FirewallRules/properties/showall/properties/dmz2sync/items/properties/Dest",
+                    "type": "string",
+                    "title": "The Dest Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      ""
+                    ]
+                  },
+                  "service": {
+                    "$id": "#/properties/FirewallRules/properties/showall/properties/dmz2sync/items/properties/service",
+                    "type": "string",
+                    "title": "The Service Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Admin-services"
+                    ]
+                  },
+                  "RuleNumber": {
+                    "$id": "#/properties/FirewallRules/properties/showall/properties/dmz2sync/items/properties/RuleNumber",
+                    "type": "integer",
+                    "title": "The Rulenumber Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                      2
+                    ]
+                  },
+                  "Log": {
+                    "$id": "#/properties/FirewallRules/properties/showall/properties/dmz2sync/items/properties/Log",
+                    "type": "string",
+                    "title": "The Log Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      ""
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "TypeOfServices": {
+      "$id": "#/properties/TypeOfServices",
+      "type": "array",
+      "title": "The Typeofservices Schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "items": {
+        "$id": "#/properties/TypeOfServices/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "SourcePorts": "10-230",
+            "Protocol": "TCP",
+            "SourceZone": "dmz",
+            "TypeOfServices": "Normal-Service",
+            "DestinationZone": "fire",
+            "DestinationPorts": "30-40"
+          }
+        ],
+        "required": [
+          "SourceZone",
+          "DestinationZone",
+          "Protocol",
+          "SourcePorts",
+          "DestinationPorts",
+          "TypeOfServices"
+        ],
+        "properties": {
+          "SourceZone": {
+            "$id": "#/properties/TypeOfServices/items/properties/SourceZone",
+            "type": "string",
+            "title": "The Sourcezone Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "dmz"
+            ]
+          },
+          "DestinationZone": {
+            "$id": "#/properties/TypeOfServices/items/properties/DestinationZone",
+            "type": "string",
+            "title": "The Destinationzone Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "fire"
+            ]
+          },
+          "Protocol": {
+            "$id": "#/properties/TypeOfServices/items/properties/Protocol",
+            "type": "string",
+            "title": "The Protocol Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "TCP"
+            ]
+          },
+          "SourcePorts": {
+            "$id": "#/properties/TypeOfServices/items/properties/SourcePorts",
+            "type": "string",
+            "title": "The Sourceports Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "10-230"
+            ]
+          },
+          "DestinationPorts": {
+            "$id": "#/properties/TypeOfServices/items/properties/DestinationPorts",
+            "type": "string",
+            "title": "The Destinationports Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "30-40"
+            ]
+          },
+          "TypeOfServices": {
+            "$id": "#/properties/TypeOfServices/items/properties/TypeOfServices",
+            "type": "string",
+            "title": "The Typeofservices Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "Normal-Service"
+            ]
+          }
+        }
+      }
+    },
+    "ProxyARP": {
+      "$id": "#/properties/ProxyARP",
+      "type": "array",
+      "title": "The Proxyarp Schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "items": {
+        "$id": "#/properties/ProxyARP/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "LeaveRouteEvenFirewallStopped": "yes",
+            "ConnectedToInterface": "eth0",
+            "AddressToARP": "",
+            "RouteToHosExist": "yes",
+            "ExternalInterface": "eth2"
+          }
+        ],
+        "required": [
+          "AddressToARP",
+          "ExternalInterface",
+          "RouteToHosExist",
+          "LeaveRouteEvenFirewallStopped",
+          "ConnectedToInterface"
+        ],
+        "properties": {
+          "AddressToARP": {
+            "$id": "#/properties/ProxyARP/items/properties/AddressToARP",
+            "type": "string",
+            "title": "The Addresstoarp Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              ""
+            ]
+          },
+          "ExternalInterface": {
+            "$id": "#/properties/ProxyARP/items/properties/ExternalInterface",
+            "type": "string",
+            "title": "The Externalinterface Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "eth2"
+            ]
+          },
+          "RouteToHosExist": {
+            "$id": "#/properties/ProxyARP/items/properties/RouteToHosExist",
+            "type": "string",
+            "title": "The Routetohosexist Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "yes"
+            ]
+          },
+          "LeaveRouteEvenFirewallStopped": {
+            "$id": "#/properties/ProxyARP/items/properties/LeaveRouteEvenFirewallStopped",
+            "type": "string",
+            "title": "The Leaverouteevenfirewallstopped Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "yes"
+            ]
+          },
+          "ConnectedToInterface": {
+            "$id": "#/properties/ProxyARP/items/properties/ConnectedToInterface",
+            "type": "string",
+            "title": "The Connectedtointerface Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "eth0"
+            ]
+          }
+        }
+      }
+    },
+    "WhenStopped": {
+      "$id": "#/properties/WhenStopped",
+      "type": "array",
+      "title": "The Whenstopped Schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "items": {
+        "$id": "#/properties/WhenStopped/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "AccessibleAddresses": "",
+            "RouteOptions": [
+              "acceptTrafficBack to host"
+            ],
+            "Interface": "eth0"
+          }
+        ],
+        "required": [
+          "Interface",
+          "AccessibleAddresses",
+          "RouteOptions"
+        ],
+        "properties": {
+          "Interface": {
+            "$id": "#/properties/WhenStopped/items/properties/Interface",
+            "type": "string",
+            "title": "The Interface Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "eth0"
+            ]
+          },
+          "AccessibleAddresses": {
+            "$id": "#/properties/WhenStopped/items/properties/AccessibleAddresses",
+            "type": "string",
+            "title": "The Accessibleaddresses Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              ""
+            ]
+          },
+          "RouteOptions": {
+            "$id": "#/properties/WhenStopped/items/properties/RouteOptions",
+            "type": "array",
+            "title": "The Routeoptions Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "items": {
+              "$id": "#/properties/WhenStopped/items/properties/RouteOptions/items",
+              "type": "string",
+              "title": "The Items Schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "acceptTrafficBack to host"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

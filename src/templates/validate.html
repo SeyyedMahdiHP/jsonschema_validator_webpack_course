@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body {
+            margin: 2%;
+        }
+
+        #codeSection {
+            display: flex;
+            justify-content: space-between;
+        }
+        #schemaSection, #instanceSection{
+            max-width: 49%;
+        }
+        #errorSection{
+            max-height: 350px;
+            overflow: auto;
+        }
+        h1{
+            margin: 5px;
+        }
+        code{
+            max-height: 50vh;
+        }
+        .highlight {
+            background-color: #ff1e005e;
+        }
+        #successMSG{
+            color:green;
+        }
+    </style>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+
+<body>
+    <a href="../" style="font-size: 20px">back</a>
+    <br>
+    <h1><%= htmlWebpackPlugin.options.title %></h1>
+    <h1 id="successMSG"></h1>
+    <div style="display: flex; flex-direction:column">
+        <div id="errorSection"></div>
+        <div id="codeSection">
+            <div id="schemaSection"></div>
+            <div id="instanceSection"></div>
+        </div>
+    </div>
+</body>
+
+</html>

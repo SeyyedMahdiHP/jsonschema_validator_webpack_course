@@ -1,0 +1,26 @@
+{
+  "input-field": {
+    "name": "allow_one_lock",
+    "type": "radio",
+    "default-value": true,
+    "label-value-pairs": [
+      {
+        "value": true,
+        "label": "Allow",
+        "hints": ""
+      },
+      {
+        "value": false,
+        "label": "Restrict",
+        "hints": ""
+      }
+    ],
+    "other-attributes": "null",
+    "alert": {
+      "title": "Android 9.0 and above",
+      "description": "",
+      "side": "field-name",
+      "svg-icon": "http://test.co/adnroid9-icon.svg"
+    }
+  }
+}

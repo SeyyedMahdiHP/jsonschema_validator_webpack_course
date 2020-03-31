@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>webpack 4 the right way (Seyyed Mahdi Hassanpour - Email: smahdi1991@gmail.com)</title>
+    <style>
+        body {
+            margin: 5%;
+        }
+
+        a {
+            font-size: 20px;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 50px;
+
+        }
+
+        .mt-2 {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<h1>JsonSchema Validator </h1>
+<h2>Generated Pages:</h2>
+<div>
+    <%= htmlWebpackPlugin.options.links %>
+</div>
+<h4 class="mt-2">
+   <b>Note:</b> We used jsonschema package for validation in this project, consider that if you are going to use validation for
+    enterprise level, you should use AJV which support JSONSchema DraftV7 which is the latest.
+
+</h4>
+<footer class="footer">
+    <p>Author: SeyyedMahdi Hassanpour</p>
+    <p>Email: Smahdi1991@gmail.com</p>
+</footer>
+</body>
+</html>
