@@ -4,7 +4,8 @@
     enterprise level, you should use AJV which support JSONSchema DraftV7 which is the latest.
 
 </h4>
-<footer class="footer">
+<h5>To use this Project: you should first run "npm i" in the console. then run "npm run serve" which runs a dev server on "http://localhost:8080/"</h5>
+<div class="footer">
     <p>Author: SeyyedMahdi Hassanpour</p>
     <p>Email: Smahdi1991@gmail.com</p>
-</footer>
+</div>
