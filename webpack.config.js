@@ -54,6 +54,7 @@ module.exports = {
         index: "index.html",
         contentBase: path.join(__dirname, 'build'),
         port:8080,
+        open: true,// if you want to load the browser automatically
         // contentBase: "./build",
         // writeToDisk: true,
         // hot: true,
